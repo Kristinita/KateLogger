@@ -107,6 +107,11 @@ ShowHotkey(HotkeyStr) {
 	;Gui, Show, NoActivate x%ActWin_X% y%gui_y% h%GuiHeight% w%text_w%
   name := "Log " . A_MM . "-" . A_DD . " " . A_Hour . ".log"
 
+  if !instr(fileexist("logs"), "D")
+   {
+     filecreatedir, logs
+   }
+
 	if HotkeyStr contains click,button
 	 {
 	   mousegetpos, mx, my
